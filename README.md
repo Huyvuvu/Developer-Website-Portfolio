@@ -1,27 +1,12 @@
 # Portfolio Website
 
-A personal developer portfolio website built with **Next.js 14**, **Tailwind CSS**, and **Express.js** backend with **MongoDB**.
+A personal developer portfolio website structured as a monorepo with **Next.js 14** (Frontend) and **Express.js** (Backend).
 
-## Features
+## Structure
 
-- **Modern UI**: Clean, responsive design using Tailwind CSS and Radix UI components.
-- **Project Showcase**: Display your projects with details and links.
-- **Blog Integration**: Share your thoughts and articles.
-- **Contact Form**: Allow visitors to get in touch.
-- **Admin Dashboard**: Manage projects and blog posts (if applicable).
-
-## Tech Stack
-
-### Frontend
-- **Framework**: Next.js 14 (App Router)
-- **Styling**: Tailwind CSS, Shadcn UI
-- **State Management**: React Context / Hooks
-- **Animations**: Framer Motion / CSS Animations
-
-### Backend
-- **Framework**: Express.js
-- **Database**: MongoDB (Mongoose ODM)
-- **API Documentation**: Swagger UI
+- **`frontend/`**: Next.js application (App Router, Tailwind CSS, Shadcn UI).
+- **`backend/`**: Express.js API with Mongoose (MongoDB).
+- **`package.json`**: Root script to orchestrate both services.
 
 ## Getting Started
 
@@ -29,7 +14,7 @@ A personal developer portfolio website built with **Next.js 14**, **Tailwind CSS
 
 - Node.js (v18 or higher)
 - npm or yarn or pnpm
-- MongoDB instance (local or Atlas)
+- MongoDB instance
 
 ### Installation
 
@@ -39,27 +24,20 @@ A personal developer portfolio website built with **Next.js 14**, **Tailwind CSS
     cd <project-directory>
     ```
 
-2.  **Install dependencies:**
-    This project uses a concurrent setup to run both frontend and backend from the root.
+2.  **Install dependencies (Root, Frontend, Backend):**
+    ```bash
+    npm run install:all
+    ```
+    *Or manually:*
     ```bash
     npm install
-    cd backend && npm install && cd ..
+    cd frontend && npm install
+    cd ../backend && npm install
     ```
 
 3.  **Environment Setup:**
-    - Create a `.env.local` file in the root directory for frontend variables.
-    - Create a `.env` file in the `backend` directory for backend variables.
-    
-    *Example `.env.local`:*
-    ```env
-    NEXT_PUBLIC_API_URL=http://localhost:5000/api
-    ```
-    
-    *Example `backend/.env`:*
-    ```env
-    PORT=5000
-    MONGODB_URI=mongodb://localhost:27017/portfolio
-    ```
+    - **Frontend**: Create `frontend/.env.local`.
+    - **Backend**: Create `backend/.env`.
 
 ### Running the Project
 
@@ -70,13 +48,11 @@ npm run dev
 ```
 
 - **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:5000
-- **API Docs**: http://localhost:5000/api-docs
+- **Backend API**: http://localhost:5000 (default)
 
 ## Scripts
 
-- `npm run dev`: Runs both frontend and backend in development mode.
-- `npm run dev:frontend`: Runs only the frontend.
-- `npm run dev:backend`: Runs only the backend.
-- `npm run build`: Builds the Next.js application.
-- `npm run start`: Starts the production server.
+- `npm run dev`: Runs both frontend and backend.
+- `dev:frontend`: Runs only the frontend.
+- `dev:backend`: Runs only the backend.
+- `install:all`: Installs dependencies for root, frontend, and backend.
